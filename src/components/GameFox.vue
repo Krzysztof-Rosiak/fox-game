@@ -1,6 +1,22 @@
 <template>
-    <div class="fox hidden"></div>
+    <div class="fox" :class="foxStatus ? `fox-${foxStatus}` : ''" />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
+
+export default defineComponent({
+    data() {
+        return {
+            status: '',
+        }
+    },
+    computed: {
+        ...mapGetters({ foxStatus: 'getFoxStatus' }),
+    },
+})
+</script>
 
 <style lang="scss" scoped>
 .fox {

@@ -19,9 +19,9 @@ import GameButtons from './GameButtons.vue'
 import GameIcons from './GameIcons.vue'
 import GameModal from './GameModal.vue'
 import { defineComponent } from 'vue'
+import { mapActions } from 'vuex'
 
 type Buttons = 'left' | 'middle' | 'right'
-
 export default defineComponent({
     components: { GameWindow, GameFox, GameButtons, GameIcons, GameModal },
     data() {
@@ -31,6 +31,7 @@ export default defineComponent({
         }
     },
     methods: {
+        ...mapActions({ handleUserAction: 'handleUserAction' }),
         selectIcon(button: Buttons) {
             const currentIconIndex = this.icons.indexOf(this.selectedIcon)
 
@@ -47,7 +48,7 @@ export default defineComponent({
                         : currentIconIndex + 1
                 this.selectedIcon = this.icons[newIconIndex]
             } else if (button === 'middle') {
-                console.log(this.selectedIcon)
+                this.handleUserAction(this.selectedIcon)
             }
         },
     },
@@ -79,7 +80,7 @@ export default defineComponent({
 
 .foreground-rain {
     display: none;
-    background-image: url(./assets/bg/rain.png);
+    background-image: url(./../assets/bg/rain.png);
     animation: raining 0.5s steps(3) infinite;
     width: 606px;
     height: 516px;

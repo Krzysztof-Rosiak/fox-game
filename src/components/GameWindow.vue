@@ -1,9 +1,21 @@
 <template>
-    <div class="game day"></div>
+    <div class="game day" :class="sceneStatus"></div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import { defineComponent } from 'vue'
+import { mapGetters } from 'vuex'
+
+export default defineComponent({
+    data() {
+        return {
+            status: '',
+        }
+    },
+    computed: {
+        ...mapGetters({ sceneStatus: 'getSceneStatus' }),
+    },
+})
 </script>
 
 <style lang="scss" scoped>

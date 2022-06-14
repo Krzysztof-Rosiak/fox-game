@@ -52,12 +52,12 @@ export default createStore({
     actions: {
         tick(context) {
             context.commit('setClock', context.state.clock + 1)
+
             if (context.state.clock === context.state.wakeTime) {
                 context.dispatch('wake')
             } else if (context.state.clock === context.state.sleepTime) {
                 context.dispatch('sleep')
             }
-            return context.state.clock
         },
         startGame(context) {
             context.commit('setCurrent', 'HATCHING')

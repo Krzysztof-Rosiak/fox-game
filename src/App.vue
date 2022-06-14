@@ -24,8 +24,6 @@ export default defineComponent({
     methods: {
         ...mapActions({ tick: 'tick' }),
         init() {
-            console.log('start game')
-
             let nextTimeToTick = Date.now()
 
             const nextAnimationFrame = () => {

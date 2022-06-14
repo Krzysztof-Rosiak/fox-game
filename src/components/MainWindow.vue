@@ -7,7 +7,10 @@
             <div class="frame"></div>
             <GameButtons @click-button="selectIcon" />
             <GameIcons :selected-icon="selectedIcon" />
-            <GameModal v-if="currentState === 'INIT'" />
+            <GameModal
+                v-if="currentState === 'INIT'"
+                message="Press the middle button to start"
+            />
         </div>
     </div>
 </template>

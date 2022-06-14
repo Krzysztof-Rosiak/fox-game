@@ -1,11 +1,19 @@
 <template>
     <div class="modal">
-        <div class="modal-inner">Press the middle button to start</div>
+        <div class="modal-inner">{{ message }}</div>
     </div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+    props: {
+        message: {
+            type: String,
+            default: '',
+        },
+    },
+})
 </script>
 
 <style lang="scss" scoped>

@@ -7,11 +7,6 @@ import { defineComponent } from 'vue'
 import { mapGetters } from 'vuex'
 
 export default defineComponent({
-    data() {
-        return {
-            status: '',
-        }
-    },
     computed: {
         ...mapGetters({ foxStatus: 'getFoxStatus' }),
     },

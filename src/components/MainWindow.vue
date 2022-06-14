@@ -7,7 +7,7 @@
             <div class="frame"></div>
             <GameButtons @click-button="selectIcon" />
             <GameIcons :selected-icon="selectedIcon" />
-            <GameModal />
+            <GameModal v-if="currentState === 'INIT'" />
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@ import GameButtons from './GameButtons.vue'
 import GameIcons from './GameIcons.vue'
 import GameModal from './GameModal.vue'
 import { defineComponent } from 'vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 type Buttons = 'left' | 'middle' | 'right'
 export default defineComponent({
@@ -29,6 +29,9 @@ export default defineComponent({
             selectedIcon: 'fish',
             icons: ['fish', 'poop', 'weather'],
         }
+    },
+    computed: {
+        ...mapGetters({ currentState: 'getCurrent' }),
     },
     methods: {
         ...mapActions({ handleUserAction: 'handleUserAction' }),
